@@ -1,0 +1,26 @@
+This file discribes what was done at each checkpoint.
+
+Checkpoint #1:
+This was just marking the creation of the repo.
+
+Checkpoint #2:
+At this point, I had only defined subtraction. I spent most of the time before
+this thinking about the problem and what I needed to do for it. My goal for the
+next ckpt was to define division and mod.
+
+Checkpoint #3:
+I defined =?, /, and %. I also started working on dividing out factors into 
+lists. I now can take a list and a factor and if it is evenly divisible, I can
+pull out one instance of that factor and add it to a list. 
+ie [ 8 ] 2 = [ 4 , 2 ] or [ 8 , 2 ] 2 = [ 4 , 2 , 2 ]
+I also have a safe version of this ( ie. [ 5 ] 2 = [ 5 ] ) but I'm not sure
+that this is a function that will actually be needed or it it's functionality
+will be incorporated elsewhere.
+My goal for the next ckpt is to be able to divide all of the same kind of 
+factors out. ( ie. [ 8 ] 2 = [ 2 , 2 , 2 ]
+
+
+
+
+
+
