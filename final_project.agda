@@ -116,3 +116,41 @@ _ = ↯
 
 _ : divif [ 8 ] 2 ≡ [ 4 , 2 ]
 _ = ↯
+
+
+{-# TERMINATING #-}
+divallout : list ℕ → ℕ → list ℕ
+divallout [] f = []
+divallout (Z ∷ n) f = n --in practice, this case should never be used
+divallout (S x ∷ n) f  with (x % f) ≡? (f - 1)          --does it divide evenly?
+divallout (S x ∷ n) f | [≡] with ((S x) / f) ⋚? 1       --should we keep dividing out?
+divallout (S x ∷ n) f | [≡] | [<] = (S x ∷ n)
+divallout (S x ∷ n) f | [≡] | [≡] = (S x ∷ n)  
+divallout (S x ∷ n) f | [≡] | [>] =  (divallout [ (S x) / f ] f ) ⧺ ( f ∷ n ) 
+divallout (S x ∷ n) f | [≢] =  (S x ∷ n)
+
+_ : divallout [ 4 ] 3 ≡ [ 4 ]
+_ = ↯
+_ : divallout [ 3 ] 3 ≡ [ 3 ]  --  [≡] | [<]
+_ = ↯
+_ : divallout [ 3 , 2 ] 3 ≡ [ 3 , 2 ] 
+_ = ↯
+_ : divallout [ 4 , 2 ] 3 ≡ [ 4 , 2 ] 
+_ = ↯
+_ : divallout [ 2 ] 3 ≡ [ 2 ] 
+_ = ↯
+_ : divallout [ 8 ] 4 ≡ [ 2 , 4 ] --  [≡] | [≡]
+_ = ↯
+_ : divallout [ 6 ] 2 ≡ [ 3 , 2 ] --  [≡] | [>]
+_ = ↯
+_ : divallout [ 8 ] 2 ≡ [ 2 , 2 , 2 ] --  [≡] | [>]
+_ = ↯
+_ : divallout [ 8 , 3 ] 2 ≡ [ 2 , 2 , 2 , 3 ] --  [≡] | [>]
+_ = ↯
+{-
+_ : divallout [ 27 ] 3 ≡ [ 3 , 3 , 3 ] --  [≡] | [>] --passes, but takes while to run
+_ = ↯-}
+_ : divallout [ 24 ] 2 ≡ [ 3 , 2 , 2 , 2 ] --  [≡] | [>]
+_ = ↯
+_ : divallout [ 24 ] 3 ≡ [ 8 , 3 ] --  [≡] | [>]
+_ = ↯

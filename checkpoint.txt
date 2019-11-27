@@ -13,13 +13,36 @@ I defined =?, /, and %. I also started working on dividing out factors into
 lists. I now can take a list and a factor and if it is evenly divisible, I can
 pull out one instance of that factor and add it to a list. 
 ie [ 8 ] 2 = [ 4 , 2 ] or [ 8 , 2 ] 2 = [ 4 , 2 , 2 ]
+
 I also have a safe version of this ( ie. [ 5 ] 2 = [ 5 ] ) but I'm not sure
 that this is a function that will actually be needed or it it's functionality
 will be incorporated elsewhere.
+
 My goal for the next ckpt is to be able to divide all of the same kind of 
 factors out. ( ie. [ 8 ] 2 = [ 2 , 2 , 2 ]
 
+Checkpoint #4:
+I defined divallout which divides all instances of a factor out of a number. 
+Despite my best efforts, I was unable to get it working without using 
+{-# TERMINATING #-}. I spent several hours trying to get Agda to recognize
+that it would terminate, but was unable. I think there must be some problem
+with my nested conditional cases and Agda not realizing that eventually, no
+matter how large the number, if you keep dividing out factors, it will reach a
+point where a number divided by a factor will equal either 0 or 1. These are
+technically the base cases of my recursion, but they don't take the normal
+straight forward form that most of the examples in class have, so I don't 
+think Agda is able to recognize them for what they are.
 
+In trying to work out how to get Agda to accept my definition of divallout
+without the terminating pragma, I ended up encorporating the two definitions
+for pulling out single factors into it. These are where the nested 
+conditionals come from.
+
+At some point, I may revisit divallout's definition. However, at this point,
+I need to move on.
+
+My next goal is to to be able to factor all factors out 
+ie. trialdiv 30 = [ 5 , 3 , 2 ]
 
 
 
