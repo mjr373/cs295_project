@@ -44,6 +44,10 @@ I need to move on.
 My next goal is to to be able to factor all factors out 
 ie. trialdiv 30 = [ 5 , 3 , 2 ]
 
+Checkpoint #5:
+I just realized that I need to commit and push regular changes before I make 
+the tag corresponding to them or the tag will attach to the previous commit.
 
+This ckpt is just me making sure my tags line up from here on out.   
 
 
