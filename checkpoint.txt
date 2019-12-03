@@ -50,4 +50,16 @@ the tag corresponding to them or the tag will attach to the previous commit.
 
 This ckpt is just me making sure my tags line up from here on out.   
 
+Checkpoint #6:
+I added loop and trialdiv to my project. 
 
+Loop takes n, f, and a where n is the number being factored, f is the number 
+it it being factored by, and a is the list of factors so far. When loop is 
+initially called, a should be set to [ n ]. Loop recursively calls itself 
+and divides out all factors of f using divallout. When f^2 becomes larger 
+than n, loop terminates.
+
+Trialdiv takes n, the number to be factored, and then initializes loop with
+n, 2, and [ n ] and returns a list of factors.
+
+At this point, most of the work to be done is commenting the code.
