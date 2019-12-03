@@ -154,3 +154,38 @@ _ : divallout [ 24 ] 2 ≡ [ 3 , 2 , 2 , 2 ] --  [≡] | [>]
 _ = ↯
 _ : divallout [ 24 ] 3 ≡ [ 8 , 3 ] --  [≡] | [>]
 _ = ↯
+
+
+{-# TERMINATING #-}
+loop : ℕ → ℕ → list ℕ → list ℕ   --where n is the number to be factored, f is the number to factor by, and a is a list of n partially factored out
+loop n Z a = a  --assume a = [ n ] when called
+loop n (S f) a with ((S f) × (S f)) ≤? n   --stop when f^2 > n
+loop n (S f) a | [≤] = loop n (S (S f)) (divallout a (S f))
+loop n (S f) a | [>] = a  --return whatever we have so far
+
+-- loop n f [ n ]
+{-
+_ : loop 4 2 [ 4 ] ≡ [ 2 , 2 ]
+_ = ↯-}
+{-_ : loop 30 2 [ 30 ] ≡ [ 5 , 3 , 2 ]
+_ = ↯-}
+{-
+_ : loop 30 6 [ 30 ] ≡ [ 30 ]
+_ = ↯-}
+
+trialdiv : ℕ → list ℕ
+trialdiv n = loop n 2 [ n ]  --always start factoring with 2, initialize a to be [ n ]
+
+{-
+trialdiv : ℕ → list ℕ
+--trialdiv n = {!!}
+trialdiv Z = []
+trialdiv (S n) with _<?_ 1 n
+trialdiv (S n) | [<] = {!!}
+trialdiv (S n) | [≥] = []-}
+
+
+_ : trialdiv 4 ≡ [ 2 , 2 ]
+_ = ↯
+_ : trialdiv 30 ≡ [ 5 , 3 , 2 ]
+_ = ↯
