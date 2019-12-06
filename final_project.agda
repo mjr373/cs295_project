@@ -1,5 +1,5 @@
-module final_project where
 
+module final_project where
 
 ---------
 -- LIB --
@@ -135,7 +135,7 @@ Z ≡? S n = [≢]
 S m ≡? Z = [≢]
 S m ≡? S n =  m ≡? n
 
-----------------------------------------------------
+----------------------------------------------------------------------------- Here's where my work starts  
 
 infixl 15 _-_
 _-_ : ℕ → ℕ → ℕ
@@ -231,17 +231,17 @@ _ = ↯
 {-# TERMINATING #-}
 divallout : list ℕ → ℕ → list ℕ    --takes a list, n, and a factor f. Assume that the first number in the list is the one we are trying to factor.
 divallout [] f = []
-divallout (Z ∷ n) f = n --in practice, this case should never be used
+divallout (Z ∷ n) f = n 
 divallout (S x ∷ n) f  with (x % f) ≡? (f - 1)          --does it divide evenly?
 divallout (S x ∷ n) f | [≡] with ((S x) / f) ⋚? 1         --yes: but should we keep dividing out?
-divallout (S x ∷ n) f | [≡] | [<] = (S x ∷ n)                 --no: return whatever we have  
+divallout (S x ∷ n) f | [≡] | [<] = (S x ∷ n)                 --no: return whatever we have (unused) 
 divallout (S x ∷ n) f | [≡] | [≡] = (S x ∷ n)                 --no: return whatever we have (case: [ 3 ] 3 )
 divallout (S x ∷ n) f | [≡] | [>] =  (divallout [ (S x) / f ] f ) ⧺ ( f ∷ n )    --yes:multiple factors of f (case: [ 8 ] 2 )
 divallout (S x ∷ n) f | [≢] =  (S x ∷ n)                  --no: (case: [ 7 ] 3)
 
 _ : divallout [ 4 ] 3 ≡ [ 4 ]
 _ = ↯
-_ : divallout [ 3 ] 3 ≡ [ 3 ]  --pass  [≡] | [<]
+_ : divallout [ 3 ] 3 ≡ [ 3 ]  --  [≡] | [<]
 _ = ↯
 _ : divallout [ 3 , 2 ] 3 ≡ [ 3 , 2 ] --
 _ = ↯

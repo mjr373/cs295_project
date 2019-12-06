@@ -62,4 +62,8 @@ than n, loop terminates.
 Trialdiv takes n, the number to be factored, and then initializes loop with
 n, 2, and [ n ] and returns a list of factors.
 
-At this point, most of the work to be done is commenting the code.
+
+End:
+I was only able to get through the implementation of integer factorization.
+At this time, I haven't been able to mathmatically prove anything about it.
+
